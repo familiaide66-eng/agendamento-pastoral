@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atendimento Pastoral</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(180deg, #0a0e2a, #1a2a5a);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.3);
+      text-align: center;
+      padding: 25px 10px;
+    }
+
+    h1 {
+      color: #6fa8dc;
+      margin: 0;
+      font-size: 28px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      color: #bcd4f5;
+      font-weight: 400;
+      margin-top: 5px;
+      font-size: 18px;
+    }
+
+    p.boas-vindas {
+      text-align: center;
+      color: #d9e2f3;
+      font-size: 16px;
+      margin: 20px 10px 0 10px;
+    }
+
+    .agenda {
+      max-width: 750px;
+      margin: 30px auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .dia {
+      text-align: left;
+      margin-bottom: 30px;
+      border-left: 4px solid #6fa8dc;
+      padding-left: 15px;
+    }
+
+    .dia h3 {
+      color: #6fa8dc;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .horario {
+      margin-left: 10px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .virtual {
+      color: #6fa8dc;
+      font-style: italic;
+    }
+
+    .obs {
+      text-align: center;
+      color: #bcd4f5;
+      font-size: 15px;
+      margin-top: 25px;
+    }
+
+    .botao {
+      display: inline-block;
+      margin: 25px auto;
+      padding: 12px 25px;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background-color: #1eb85a;
+    }
+
+    .legenda {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #bcd4f5;
+    }
+
+    .legenda span {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .legenda .verde {
+      background-color: #7CFC00;
+      color: #000;
+    }
+
+    .legenda .cinza {
+      background-color: #ccc;
+      color: #000;
+    }
+
+    .legenda .azul {
+      background-color: #6fa8dc;
+      color: #fff;
+    }
+
+    /* Estilo do formulário */
+    .formulario {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .formulario h3 {
+      text-align: center;
+      color: #6fa8dc;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 15px;
+      color: #d9e2f3;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #25D366;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #1eb85a;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Família Apostólica Ide 💙</h1>
+    <h2>Atendimento Pastoral</h2>
+  </header>
+
+  <p class="boas-vindas">Seja bem-vindo(a) ao nosso sistema de agendamento pastoral.<br>
+  Escolha o dia e horário disponíveis para seu atendimento.</p>
+
+  <section class="agenda">
+
+    <div class="dia">
+      <h3>Segunda — <span id="data-segunda"></span> — Pr. Edegar</h3>
+      <div class="horario">INDISPONÍVEL</div>
+    </div>
+
+    <div class="dia">
+      <h3>Terça — <span id="data-terca"></span> — Varlon</h3>
+      <div class="horario"> 08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
+    </div>
+
+    <div class="dia">
+      <h3>Quarta — <span id="data-quarta"></span> — Adriana</h3>
+      <div class="horario">09:00 | 10:00 | 14:00 | 15:00 | 16:00 </div>
+    </div>
+
+    <div class="dia">
+      <h3>Quinta — <span id="data-quinta"></span> — Pr. Renato</h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00 </div>
+      <p class="virtual">✨ Apóstolos Valter e Deyviane atenderão os pastores e líderes de ministérios.</p>
+    </div>
+
+    <div class="dia">
+      <h3>Sexta — <span id="data-sexta"></span> — Pr. Max</h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00 </div>
+    </div>
+
+    <div class="dia">
+      <h3>Sábado — <span id="data-sabado"></span> — Pra. Lílian <span class="virtual">(Atendimento Virtual)</span></h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00 </div>
+    </div>
+
+    <div class="dia">
+      <h3>Domingo — <span id="data-domingo"></span> — Bianca <span class="virtual">(Atendimento Virtual)</span></h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00 </div>
+    </div>
+
+  </section>
+
+  <div class="formulario">
+    <h3>📝 Agendamento<h3>
+      Local: Igreja Família Apostólica IDE
+<h3>Rua Boa Esperança, 162, Sumaré 
+Montes Claros-MG 
+      </h3>
+    <form id="formAgendamento">
+      <label for="nome">Nome completo:</label>
+      <input type="text" id="nome" required>
+
+      <label for="motivo">Motivo do atendimento:</label>
+      <textarea id="motivo" rows="3" required></textarea>
+
+      <label for="dia">Dia da semana:</label>
+      <select id="dia" required>
+        <option value="">Selecione...</option>
+        <option>Segunda - Pr. Edegar</option>
+        <option>Terça - Varlon</option>
+        <option>Quarta - Adriana</option>
+        <option>Quinta - Pr. Renato</option>
+        <option>Sexta - Pr. Max</option>
+        <option>Sábado - Pra. Lílian (Virtual)</option>
+        <option>Domingo - Bianca (Virtual)</option>
+      </select>
+
+      <label for="horario">Horário:</label>
+      <select id="horario" required>
+        <option value="">Selecione...</option>
+        <option>08:00</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+      </select>
+
+      <button type="submit">💬 Enviar pelo WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    // Função de datas automáticas
+    const hoje = new Date();
+    const diaSemana = hoje.getDay();
+    const segunda = new Date(hoje);
+    segunda.setDate(hoje.getDate() - diaSemana + 1);
+
+    const dias = ["data-segunda", "data-terca", "data-quarta", "data-quinta", "data-sexta", "data-sabado", "data-domingo"];
+
+    dias.forEach((id, i) => {
+      const data = new Date(segunda);
+      data.setDate(segunda.getDate() + i);
+      document.getElementById(id).innerText = data.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+    });
+
+    // Envio para WhatsApp
+    document.getElementById("formAgendamento").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const motivo = document.getElementById("motivo").value;
+      const dia = document.getElementById("dia").value;
+      const horario = document.getElementById("horario").value;
+
+      const mensagem = `Olá! Gostaria de agendar um atendimento pastoral.%0A%0A👤 Nome: ${nome}%0A📅 Dia: ${dia}%0A⏰ Horário: ${horario}%0A🕊 Motivo: ${motivo}`;
+      window.open(`https://wa.me/5538988460972?text=${mensagem}`, "_blank");
+    });
+  </script>
+
+</body>
+</html>
