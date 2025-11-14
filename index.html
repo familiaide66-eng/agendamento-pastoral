@@ -73,6 +73,58 @@
       font-style: italic;
     }
 
+    .obs {
+      text-align: center;
+      color: #bcd4f5;
+      font-size: 15px;
+      margin-top: 25px;
+    }
+
+    .botao {
+      display: inline-block;
+      margin: 25px auto;
+      padding: 12px 25px;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background-color: #1eb85a;
+    }
+
+    .legenda {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #bcd4f5;
+    }
+
+    .legenda span {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .legenda .verde {
+      background-color: #7CFC00;
+      color: #000;
+    }
+
+    .legenda .cinza {
+      background-color: #ccc;
+      color: #000;
+    }
+
+    .legenda .azul {
+      background-color: #6fa8dc;
+      color: #fff;
+    }
+
     .formulario {
       max-width: 600px;
       margin: 40px auto;
@@ -105,6 +157,10 @@
       background-color: rgba(255, 255, 255, 0.9);
     }
 
+    textarea {
+      resize: vertical;
+    }
+
     button {
       display: block;
       width: 100%;
@@ -116,7 +172,13 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      transition: 0.3s;
     }
+
+    button:hover {
+      background-color: #1eb85a;
+    }
+
   </style>
 </head>
 <body>
@@ -126,10 +188,8 @@
   <h2>Atendimento Pastoral</h2>
 </header>
 
-<p class="boas-vindas">
-  Seja bem-vindo(a) ao nosso sistema de agendamento pastoral.<br>
-  Escolha o dia e horário disponíveis para seu atendimento.
-</p>
+<p class="boas-vindas">Seja bem-vindo(a) ao nosso sistema de agendamento pastoral.<br>
+Escolha o dia e horário disponíveis para seu atendimento.</p>
 
 <section class="agenda">
 
@@ -171,32 +231,97 @@
 
 </section>
 
+<div class="formulario">
+  <h3>📝 Agendamento</h3>
+  Local: Igreja Família Apostólica IDE
+  <h3>Rua Boa Esperança, 162, Sumaré<br>Montes Claros-MG</h3>
+
+  <form id="formAgendamento">
+    <label for="nome">Nome completo:</label>
+    <input type="text" id="nome" required>
+
+    <label for="motivo">Motivo do atendimento:</label>
+    <textarea id="motivo" rows="3" required></textarea>
+
+    <label for="dia">Dia da semana:</label>
+    <select id="dia" required>
+      <option value="">Selecione...</option>
+      <option>Segunda - Pr. Edegar</option>
+      <option>Terça - Varlon</option>
+      <option>Quarta - Adriana</option>
+      <option>Quinta - Pr. Renato</option>
+      <option>Sexta - Pr. Max</option>
+      <option>Sábado - Pra. Lílian (Virtual)</option>
+      <option>Domingo - Bianca (Virtual)</option>
+    </select>
+
+    <label for="horario">Horário:</label>
+    <select id="horario" required>
+      <option value="">Selecione...</option>
+      <option>08:00</option>
+      <option>09:00</option>
+      <option>10:00</option>
+      <option>11:00</option>
+      <option>14:00</option>
+      <option>15:00</option>
+      <option>16:00</option>
+      <option>17:00</option>
+    </select>
+
+    <button type="submit">💬 Enviar pelo WhatsApp</button>
+  </form>
+</div>
+
 <script>
-  // Sempre calcular a semana seguinte
+
+  // -----------------------------
+  // DATAS PERSONALIZADAS
+  // -----------------------------
+
   const hoje = new Date();
-  const diaAtual = hoje.getDay(); // 0 = domingo
-  const segundaQueVem = new Date();
+  const diaSemana = hoje.getDay(); // 0=Domingo, 1=Segunda...
 
-  // vai para a próxima segunda-feira
-  segundaQueVem.setDate(hoje.getDate() - diaAtual + 8);
+  // Obter a segunda-feira desta semana
+  const segundaSemanaAtual = new Date(hoje);
+  segundaSemanaAtual.setDate(hoje.getDate() - diaSemana + 1);
 
-  const ids = [
-    "data-segunda", "data-terca", "data-quarta",
-    "data-quinta", "data-sexta", "data-sabado", "data-domingo"
-  ];
+  // Datas da semana atual (sexta, sábado e domingo)
+  const datasSemanaAtual = {
+    sexta: new Date(segundaSemanaAtual.getTime() + 4 * 86400000),
+    sabado: new Date(segundaSemanaAtual.getTime() + 5 * 86400000),
+    domingo: new Date(segundaSemanaAtual.getTime() + 6 * 86400000),
+  };
 
-  ids.forEach((id, index) => {
-    const data = new Date(segundaQueVem);
-    data.setDate(segundaQueVem.getDate() + index);
+  // Datas da PRÓXIMA semana (segunda - quinta)
+  const datasSemanaQueVem = {
+    segunda: new Date(segundaSemanaAtual.getTime() + 7 * 86400000),
+    terca:  new Date(segundaSemanaAtual.getTime() + 8 * 86400000),
+    quarta: new Date(segundaSemanaAtual.getTime() + 9 * 86400000),
+    quinta: new Date(segundaSemanaAtual.getTime() +10 * 86400000),
+  };
 
-    // MOSTRAR APENAS dias anteriores ao dia atual
-    if (index + 1 > diaAtual) {
-      document.querySelector(`#${id}`).closest(".dia").style.display = "none";
-    } else {
-      document.getElementById(id).innerText =
-        data.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
-    }
+  // Preencher no HTML
+  document.getElementById("data-segunda").textContent = datasSemanaQueVem.segunda.toLocaleDateString("pt-BR");
+  document.getElementById("data-terca").textContent   = datasSemanaQueVem.terca.toLocaleDateString("pt-BR");
+  document.getElementById("data-quarta").textContent  = datasSemanaQueVem.quarta.toLocaleDateString("pt-BR");
+  document.getElementById("data-quinta").textContent  = datasSemanaQueVem.quinta.toLocaleDateString("pt-BR");
+
+  document.getElementById("data-sexta").textContent   = datasSemanaAtual.sexta.toLocaleDateString("pt-BR");
+  document.getElementById("data-sabado").textContent  = datasSemanaAtual.sabado.toLocaleDateString("pt-BR");
+  document.getElementById("data-domingo").textContent = datasSemanaAtual.domingo.toLocaleDateString("pt-BR");
+
+  // WhatsApp
+  document.getElementById("formAgendamento").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const nome = document.getElementById("nome").value;
+    const motivo = document.getElementById("motivo").value;
+    const dia = document.getElementById("dia").value;
+    const horario = document.getElementById("horario").value;
+
+    const mensagem = `Olá! Gostaria de agendar um atendimento pastoral.%0A%0A👤 Nome: ${nome}%0A📅 Dia: ${dia}%0A⏰ Horário: ${horario}%0A🕊 Motivo: ${motivo}`;
+    window.open(`https://wa.me/5538988460972?text=${mensagem}`, "_blank");
   });
+
 </script>
 
 </body>
