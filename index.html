@@ -96,36 +96,6 @@
       background-color: #1eb85a;
     }
 
-    .legenda {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 14px;
-      color: #bcd4f5;
-    }
-
-    .legenda span {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-
-    .legenda .verde {
-      background-color: #7CFC00;
-      color: #000;
-    }
-
-    .legenda .cinza {
-      background-color: #ccc;
-      color: #000;
-    }
-
-    .legenda .azul {
-      background-color: #6fa8dc;
-      color: #fff;
-    }
-
-    /* Estilo do formulário */
     .formulario {
       max-width: 600px;
       margin: 40px auto;
@@ -221,7 +191,7 @@
     </div>
 
     <div class="dia">
-      <h3>Sábado — <span id="data-sabado"></span> — Pra. Lílian <span class="virtual">(Atendimento Virtual)</span></h3>
+      <h3>Sabado — <span id="data-sabado"></span> — Pra. Lílian <span class="virtual">(Atendimento Virtual)</span></h3>
       <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00 </div>
     </div>
 
@@ -238,6 +208,7 @@
 <h3>Rua Boa Esperança, 162, Sumaré 
 Montes Claros-MG 
       </h3>
+
     <form id="formAgendamento">
       <label for="nome">Nome completo:</label>
       <input type="text" id="nome" required>
@@ -274,33 +245,62 @@ Montes Claros-MG
     </form>
   </div>
 
-  <script>
-    // Função de datas automáticas
-    const hoje = new Date();
-    const diaSemana = hoje.getDay();
-    const segunda = new Date(hoje);
-    segunda.setDate(hoje.getDate() - diaSemana + 1);
+<script>
+/* ================================
+   SISTEMA DE DATA AUTOMÁTICA + MANUAL
+   ================================ */
 
-    const dias = ["data-segunda", "data-terca", "data-quarta", "data-quinta", "data-sexta", "data-sabado", "data-domingo"];
+// SE QUISER DEFINIR A DATA MANUALMENTE, ALTERE AQUI:
+let dataManual = "";  
+// Exemplo: "18/11/2025"
 
-    dias.forEach((id, i) => {
-      const data = new Date(segunda);
-      data.setDate(segunda.getDate() + i);
-      document.getElementById(id).innerText = data.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
-    });
+// SE dataManual estiver vazia, usa automático
+let hoje = dataManual ? new Date(dataManual.split("/").reverse().join("-")) : new Date();
 
-    // Envio para WhatsApp
-    document.getElementById("formAgendamento").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const nome = document.getElementById("nome").value;
-      const motivo = document.getElementById("motivo").value;
-      const dia = document.getElementById("dia").value;
-      const horario = document.getElementById("horario").value;
+// Se for domingo, já muda para a próxima semana
+if (hoje.getDay() === 0) {
+  hoje.setDate(hoje.getDate() + 1);
+}
 
-      const mensagem = `Olá! Gostaria de agendar um atendimento pastoral.%0A%0A👤 Nome: ${nome}%0A📅 Dia: ${dia}%0A⏰ Horário: ${horario}%0A🕊 Motivo: ${motivo}`;
-      window.open(`https://wa.me/5538988460972?text=${mensagem}`, "_blank");
-    });
-  </script>
+const diaSemana = hoje.getDay();
+const segunda = new Date(hoje);
+segunda.setDate(hoje.getDate() - diaSemana + 1);
+
+// IDs dos spans das datas
+const dias = [
+  "data-segunda",
+  "data-terca",
+  "data-quarta",
+  "data-quinta",
+  "data-sexta",
+  "data-sabado",
+  "data-domingo"
+];
+
+// Gerar as datas da semana
+dias.forEach((id, i) => {
+  const data = new Date(segunda);
+  data.setDate(segunda.getDate() + i);
+  document.getElementById(id).innerText =
+    data.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+});
+
+/* ================================
+   ENVIO PARA WHATSAPP
+   ================================ */
+document.getElementById("formAgendamento").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const nome = document.getElementById("nome").value;
+  const motivo = document.getElementById("motivo").value;
+  const dia = document.getElementById("dia").value;
+  const horario = document.getElementById("horario").value;
+
+  const mensagem =
+    `Olá! Gostaria de agendar um atendimento pastoral.%0A%0A👤 Nome: ${nome}%0A📅 Dia: ${dia}%0A⏰ Horário: ${horario}%0A🕊 Motivo: ${motivo}`;
+
+  window.open(`https://wa.me/5538988460972?text=${mensagem}`, "_blank");
+});
+</script>
 
 </body>
 </html>
