@@ -73,58 +73,7 @@
       font-style: italic;
     }
 
-    .obs {
-      text-align: center;
-      color: #bcd4f5;
-      font-size: 15px;
-      margin-top: 25px;
-    }
-
-    .botao {
-      display: inline-block;
-      margin: 25px auto;
-      padding: 12px 25px;
-      background-color: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .botao:hover {
-      background-color: #1eb85a;
-    }
-
-    .legenda {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 14px;
-      color: #bcd4f5;
-    }
-
-    .legenda span {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-
-    .legenda .verde {
-      background-color: #7CFC00;
-      color: #000;
-    }
-
-    .legenda .cinza {
-      background-color: #ccc;
-      color: #000;
-    }
-
-    .legenda .azul {
-      background-color: #6fa8dc;
-      color: #fff;
-    }
-
+    /* Formulário */
     .formulario {
       max-width: 600px;
       margin: 40px auto;
@@ -157,10 +106,6 @@
       background-color: rgba(255, 255, 255, 0.9);
     }
 
-    textarea {
-      resize: vertical;
-    }
-
     button {
       display: block;
       width: 100%;
@@ -178,151 +123,113 @@
     button:hover {
       background-color: #1eb85a;
     }
-
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Família Apostólica Ide 💙</h1>
-  <h2>Atendimento Pastoral</h2>
-</header>
+  <header>
+    <h1>Família Apostólica Ide 💙</h1>
+    <h2>Atendimento Pastoral</h2>
+  </header>
 
-<p class="boas-vindas">Seja bem-vindo(a) ao nosso sistema de agendamento pastoral.<br>
-Escolha o dia e horário disponíveis para seu atendimento.</p>
+  <p class="boas-vindas">
+    Seja bem-vindo(a) ao nosso sistema de agendamento pastoral.<br>
+    Escolha o dia e horário disponíveis para seu atendimento.
+  </p>
 
-<section class="agenda">
+  <section class="agenda">
 
-  <div class="dia">
-    <h3>Segunda — <span id="data-segunda"></span> — Pr. Edegar</h3>
-    <div class="horario">INDISPONÍVEL</div>
+    <div class="dia">
+      <h3>Segunda — 17/11 — Pr. Edegar</h3>
+      <div class="horario">INDISPONÍVEL</div>
+    </div>
+
+    <div class="dia">
+      <h3>Terça — 18/11 — Varlon</h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
+    </div>
+
+    <div class="dia">
+      <h3>Quarta — 19/11 — Adriana</h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
+    </div>
+
+    <div class="dia">
+      <h3>Quinta — 20/11 — Pr. Renato</h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
+      <p class="virtual">✨ Apóstolos Valter e Deyviane atenderão os pastores e líderes de ministérios.</p>
+    </div>
+
+    <div class="dia">
+      <h3>Sexta — 14/11 — Pr. Max</h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
+    </div>
+
+    <div class="dia">
+      <h3>Sábado — 15/11 — Pra. Lílian <span class="virtual">(Virtual)</span></h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
+    </div>
+
+    <div class="dia">
+      <h3>Domingo — 16/11 — Bianca <span class="virtual">(Virtual)</span></h3>
+      <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
+    </div>
+
+  </section>
+
+  <div class="formulario">
+    <h3>📝 Agendamento</h3>
+    Local: Igreja Família Apostólica IDE
+    <h3>Rua Boa Esperança, 162, Sumaré - Montes Claros/MG</h3>
+
+    <form id="formAgendamento">
+      <label for="nome">Nome completo:</label>
+      <input type="text" id="nome" required>
+
+      <label for="motivo">Motivo do atendimento:</label>
+      <textarea id="motivo" rows="3" required></textarea>
+
+      <label for="dia">Dia da semana:</label>
+      <select id="dia" required>
+        <option value="">Selecione...</option>
+        <option>Segunda - 17/11 - Pr. Edegar</option>
+        <option>Terça - 18/11 - Varlon</option>
+        <option>Quarta - 19/11 - Adriana</option>
+        <option>Quinta - 20/11 - Pr. Renato</option>
+        <option>Sexta - 14/11 - Pr. Max</option>
+        <option>Sábado - 15/11 - Pra. Lílian (Virtual)</option>
+        <option>Domingo - 16/11 - Bianca (Virtual)</option>
+      </select>
+
+      <label for="horario">Horário:</label>
+      <select id="horario" required>
+        <option value="">Selecione...</option>
+        <option>08:00</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+      </select>
+
+      <button type="submit">💬 Enviar pelo WhatsApp</button>
+    </form>
   </div>
 
-  <div class="dia">
-    <h3>Terça — <span id="data-terca"></span> — Varlon</h3>
-    <div class="horario">08:00 | 10:00 | 16:00</div>
-  </div>
+  <script>
+    document.getElementById("formAgendamento").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const motivo = document.getElementById("motivo").value;
+      const dia = document.getElementById("dia").value;
+      const horario = document.getElementById("horario").value;
 
-  <div class="dia">
-    <h3>Quarta — <span id="data-quarta"></span> — Adriana</h3>
-    <div class="horario">09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
-  </div>
+      const mensagem =
+        `Olá! Gostaria de agendar um atendimento pastoral.%0A%0A👤 Nome: ${nome}%0A📅 Dia: ${dia}%0A⏰ Horário: ${horario}%0A🕊 Motivo: ${motivo}`;
 
-  <div class="dia">
-    <h3>Quinta — <span id="data-quinta"></span> — Pr. Renato</h3>
-    <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
-    <p class="virtual">✨ Apóstolos Valter e Deyviane atenderão os pastores e líderes de ministérios.</p>
-  </div>
-
-  <div class="dia">
-    <h3>Sexta — <span id="data-sexta"></span> — Pr. Max</h3>
-    <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
-  </div>
-
-  <div class="dia">
-    <h3>Sábado — <span id="data-sabado"></span> — Pra. Lílian <span class="virtual">(Atendimento Virtual)</span></h3>
-    <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
-  </div>
-
-  <div class="dia">
-    <h3>Domingo — <span id="data-domingo"></span> — Bianca <span class="virtual">(Atendimento Virtual)</span></h3>
-    <div class="horario">08:00 | 09:00 | 10:00 | 14:00 | 15:00 | 16:00</div>
-  </div>
-
-</section>
-
-<div class="formulario">
-  <h3>📝 Agendamento</h3>
-  Local: Igreja Família Apostólica IDE
-  <h3>Rua Boa Esperança, 162, Sumaré<br>Montes Claros-MG</h3>
-
-  <form id="formAgendamento">
-    <label for="nome">Nome completo:</label>
-    <input type="text" id="nome" required>
-
-    <label for="motivo">Motivo do atendimento:</label>
-    <textarea id="motivo" rows="3" required></textarea>
-
-    <label for="dia">Dia da semana:</label>
-    <select id="dia" required>
-      <option value="">Selecione...</option>
-      <option>Segunda - Pr. Edegar</option>
-      <option>Terça - Varlon</option>
-      <option>Quarta - Adriana</option>
-      <option>Quinta - Pr. Renato</option>
-      <option>Sexta - Pr. Max</option>
-      <option>Sábado - Pra. Lílian (Virtual)</option>
-      <option>Domingo - Bianca (Virtual)</option>
-    </select>
-
-    <label for="horario">Horário:</label>
-    <select id="horario" required>
-      <option value="">Selecione...</option>
-      <option>08:00</option>
-      <option>09:00</option>
-      <option>10:00</option>
-      <option>11:00</option>
-      <option>14:00</option>
-      <option>15:00</option>
-      <option>16:00</option>
-      <option>17:00</option>
-    </select>
-
-    <button type="submit">💬 Enviar pelo WhatsApp</button>
-  </form>
-</div>
-
-<script>
-
-  // -----------------------------
-  // DATAS PERSONALIZADAS
-  // -----------------------------
-
-  const hoje = new Date();
-  const diaSemana = hoje.getDay(); // 0=Domingo, 1=Segunda...
-
-  // Obter a segunda-feira desta semana
-  const segundaSemanaAtual = new Date(hoje);
-  segundaSemanaAtual.setDate(hoje.getDate() - diaSemana + 1);
-
-  // Datas da semana atual (sexta, sábado e domingo)
-  const datasSemanaAtual = {
-    sexta: new Date(segundaSemanaAtual.getTime() + 4 * 86400000),
-    sabado: new Date(segundaSemanaAtual.getTime() + 5 * 86400000),
-    domingo: new Date(segundaSemanaAtual.getTime() + 6 * 86400000),
-  };
-
-  // Datas da PRÓXIMA semana (segunda - quinta)
-  const datasSemanaQueVem = {
-    segunda: new Date(segundaSemanaAtual.getTime() + 7 * 86400000),
-    terca:  new Date(segundaSemanaAtual.getTime() + 8 * 86400000),
-    quarta: new Date(segundaSemanaAtual.getTime() + 9 * 86400000),
-    quinta: new Date(segundaSemanaAtual.getTime() +10 * 86400000),
-  };
-
-  // Preencher no HTML
-  document.getElementById("data-segunda").textContent = datasSemanaQueVem.segunda.toLocaleDateString("pt-BR");
-  document.getElementById("data-terca").textContent   = datasSemanaQueVem.terca.toLocaleDateString("pt-BR");
-  document.getElementById("data-quarta").textContent  = datasSemanaQueVem.quarta.toLocaleDateString("pt-BR");
-  document.getElementById("data-quinta").textContent  = datasSemanaQueVem.quinta.toLocaleDateString("pt-BR");
-
-  document.getElementById("data-sexta").textContent   = datasSemanaAtual.sexta.toLocaleDateString("pt-BR");
-  document.getElementById("data-sabado").textContent  = datasSemanaAtual.sabado.toLocaleDateString("pt-BR");
-  document.getElementById("data-domingo").textContent = datasSemanaAtual.domingo.toLocaleDateString("pt-BR");
-
-  // WhatsApp
-  document.getElementById("formAgendamento").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const nome = document.getElementById("nome").value;
-    const motivo = document.getElementById("motivo").value;
-    const dia = document.getElementById("dia").value;
-    const horario = document.getElementById("horario").value;
-
-    const mensagem = `Olá! Gostaria de agendar um atendimento pastoral.%0A%0A👤 Nome: ${nome}%0A📅 Dia: ${dia}%0A⏰ Horário: ${horario}%0A🕊 Motivo: ${motivo}`;
-    window.open(`https://wa.me/5538988460972?text=${mensagem}`, "_blank");
-  });
-
-</script>
+      window.open(`https://wa.me/5538988460972?text=${mensagem}`, "_blank");
+    });
+  </script>
 
 </body>
 </html>
