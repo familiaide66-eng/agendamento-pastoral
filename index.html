@@ -209,6 +209,8 @@
     <option>14:00</option>
     <option>15:00</option>
     <option>16:00</option>
+    <option>17:00</option>
+    <option>18:00</option>
     </select>
 
     <button type="submit">💬 Enviar pelo WhatsApp</button>
@@ -224,7 +226,7 @@
       const horario = document.getElementById("horario").value;
 
       const mensagem =
-        `Olá! Gostaria de agendar um atendimento pastoral.%0A%0A👤 Nome: ${nome}%0A📅 Dia: ${dia}%0A⏰ Horário: ${horario}%0A🕊 Motivo: ${motivo}`;
+        `Olá! Gostaria de agendar um atendimento pastoral.%0A%0A👤 Nome: ${nome}%0A📅 Dia: ${dia}%0A⏰ Horário: ${horario}%0A🗣 Motivo: ${motivo}`;
 
       window.open(`https://wa.me/5538988460972?text=${mensagem}`, "_blank");
     });
